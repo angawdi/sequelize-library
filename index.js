@@ -14,7 +14,7 @@ app.use(ejsLayouts);
 
 //Define routes
 app.get('/', function(req, res){
-	res.send('stub for home page');
+	res.render('home');
 });
 
 // Listen on port 3000
