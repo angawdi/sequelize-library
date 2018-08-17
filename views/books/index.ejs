@@ -1,7 +1,9 @@
 <h2>All the books!</h2>
 <% books.forEach(function(b) {%>
 	<div>
-		<p><%= b.title %> by <%= b.author %>></p>
+		<h3>
+			<a href="/books/<%=b.id%>"><%=b.title %> </a>by <%= b.author %>
+		</h3>
 		<p>It's <%= b.pages %> pages long!%></p>
 	</div>
 <%});%>
