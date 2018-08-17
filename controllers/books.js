@@ -21,7 +21,13 @@ router.get('/new', function(req, res){
 });
 
 router.post('/', function(req, res){
-	res.send(req.body);
+	db.book.create(req.body).then(function(createdBook){
+		console.log('book created looks like', createdBook);
+		res.redirect('/books');
+	}).catch(function(err){
+		console.log('error happened', err);
+		res.render('404');
+	});
 });
 
 // Export the router - this lets other files include me
