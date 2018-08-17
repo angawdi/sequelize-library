@@ -5,12 +5,14 @@ var express = require('express');
 
 // Global variables
 var app= express();
-var db = require('./models');
 
 // Set and use statements
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
+
+// Include any controllers/routers
+app.use('/books', require('./controllers/books'));
 
 //Define routes
 app.get('/', function(req, res){
