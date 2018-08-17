@@ -32,11 +32,24 @@ router.post('/', function(req, res){
 
 router.get('/:id', function(req, res){
 	db.book.findById(req.params.id).then(function(foundBook){
+		res.send(foundBook);
 	}).catch(function(err){
 		console.log('err', err);
 		res.render('404');
 	});
-})
+});
+
+router.delete('/:id', function(req, res){
+	db.book.destroy({
+		where: { id: req.params.id }
+	}).then(function(recentlyDestroyed){
+		console.log('deleted', recentlyDestroyed);
+		res.send('successfully deleted!');
+	}).catch(function(er){
+		console.log('err', err);
+		res.send('sad fail');
+	});
+});
 
 // Export the router - this lets other files include me
 module.exports = router;
